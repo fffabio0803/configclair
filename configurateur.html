@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurateur PC gaming — ConfigClair</title>
+  <meta name="description" content="Décrivez votre usage, votre écran et votre budget pour trouver le PC gaming adapté à vos besoins.">
+  <meta name="theme-color" content="#07111f">
+  <link rel="canonical" href="https://configclair.fr/configurateur.html">
+  <link rel="icon" type="image/png" href="/assets/configclair-logo.png?v=3">
+  <style>
+    :root{--bg:#07111f;--panel:#0e1b2d;--soft:#14243a;--text:#f6f8fc;--muted:#a8b5c7;--cyan:#47d7ff;--green:#72f6b5;--line:rgba(255,255,255,.11);--warning:#ffcf70}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,select,input{font:inherit}a{color:inherit}.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.logo{display:inline-flex;align-items:center;gap:10px;font-size:1.2rem;font-weight:850;text-decoration:none;letter-spacing:-.04em}.logo img{width:34px;height:34px;border-radius:9px}.logo b{color:var(--cyan)}.back{color:var(--muted);font-size:.9rem;text-decoration:none}.back:hover{color:var(--text)}
+    .intro{padding:64px 0 34px}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(71,215,255,.28);border-radius:999px;background:rgba(71,215,255,.07);color:var(--cyan);font-size:.78rem;font-weight:800}.intro h1{max-width:780px;margin:22px 0 16px;font-size:clamp(2.6rem,6vw,5.2rem);line-height:.98;letter-spacing:-.065em}.gradient{background:linear-gradient(110deg,var(--cyan),var(--green));-webkit-background-clip:text;color:transparent}.intro p{max-width:720px;margin:0;color:var(--muted);font-size:1.08rem}.demo-note{margin-top:24px;padding:14px 16px;border:1px solid rgba(255,207,112,.25);border-radius:12px;background:rgba(255,207,112,.06);color:#ecd9ac;font-size:.88rem}
+    .layout{display:grid;grid-template-columns:330px 1fr;gap:24px;padding:24px 0 80px;align-items:start}.filters{position:sticky;top:18px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}.filters h2{margin:0 0 4px;font-size:1.25rem}.filters>p{margin:0 0 20px;color:var(--muted);font-size:.86rem}.field{margin-top:17px}.field label,.field legend{display:block;margin-bottom:7px;font-size:.82rem;font-weight:800}.field select,.field input[type="number"]{width:100%;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:9px;background:#0a1626;color:var(--text);outline:none}.field select:focus,.field input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(71,215,255,.1)}.range-head{display:flex;justify-content:space-between;gap:12px}.range-head output{color:var(--green);font-weight:850}.field input[type="range"]{width:100%;accent-color:var(--cyan)}.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.025);font-size:.82rem}.check input{accent-color:var(--cyan)}.reset{width:100%;margin-top:20px;padding:11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--text);cursor:pointer;font-weight:750}.reset:hover{background:rgba(255,255,255,.05)}
+    .results-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:16px}.results-head h2{margin:0;font-size:1.6rem;letter-spacing:-.035em}.results-head p{margin:4px 0 0;color:var(--muted);font-size:.88rem}.sort{height:40px;padding:0 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--text)}.cards{display:grid;gap:14px}.card{display:grid;grid-template-columns:1fr auto;gap:18px;padding:21px;border:1px solid var(--line);border-radius:16px;background:var(--panel);transition:.18s ease}.card:hover{border-color:rgba(71,215,255,.3);transform:translateY(-1px)}.card-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.rank{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:rgba(71,215,255,.1);color:var(--cyan);font-weight:900;font-size:.78rem}.card h3{margin:0;font-size:1.05rem}.match{padding:4px 8px;border-radius:999px;background:rgba(114,246,181,.09);color:var(--green);font-size:.72rem;font-weight:850}.specs{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.spec{padding:6px 8px;border-radius:7px;background:var(--soft);color:#d8e1ed;font-size:.76rem}.reason{margin:0;color:var(--muted);font-size:.84rem}.side{text-align:right;min-width:130px}.price{font-size:1.35rem;font-weight:900;color:var(--green)}.merchant{margin:3px 0 12px;color:var(--muted);font-size:.75rem}.offer{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:8px;background:var(--text);color:var(--bg);text-decoration:none;font-size:.8rem;font-weight:850}.offer[aria-disabled="true"]{opacity:.55;pointer-events:none}.empty{padding:48px 24px;border:1px dashed var(--line);border-radius:16px;text-align:center;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:7px}.footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.8rem}.footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer a{color:var(--muted)}
+    @media(max-width:850px){.intro{padding-top:48px}.layout{grid-template-columns:1fr}.filters{position:static}.checks{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:580px){.wrap{width:min(100% - 24px,1180px)}.nav{min-height:66px}.back span{display:none}.intro{padding:42px 0 20px}.intro h1{font-size:2.65rem}.layout{padding-top:16px}.checks{grid-template-columns:1fr 1fr}.results-head{align-items:start;flex-direction:column}.sort{width:100%}.card{grid-template-columns:1fr}.side{text-align:left;display:grid;grid-template-columns:1fr auto;align-items:end}.merchant{margin-bottom:0}.offer{grid-row:1/3;grid-column:2}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="logo" href="/"><img src="/assets/configclair-logo.png?v=3" alt=""><span>Config<b>Clair</b></span></a>
+    <a class="back" href="/"><span>← </span>Retour à l’accueil</a>
+  </header>
+  <main>
+    <section class="wrap intro">
+      <span class="eyebrow">● Prototype fonctionnel</span>
+      <h1>Décrivez votre besoin.<br><span class="gradient">On clarifie le choix.</span></h1>
+      <p>Indiquez votre usage, votre écran et votre budget. ConfigClair classe les configurations les plus cohérentes et explique chaque recommandation.</p>
+      <div class="demo-note"><strong>Démonstration :</strong> les configurations, marchands et prix ci-dessous sont fictifs. Ils seront remplacés par les flux officiels des partenaires après validation.</div>
+    </section>
+
+    <section class="wrap layout" aria-label="Configurateur de PC">
+      <form class="filters" id="filters">
+        <h2>Votre configuration idéale</h2>
+        <p>Les résultats s’actualisent automatiquement.</p>
+
+        <div class="field"><label for="usage">Usage principal</label><select id="usage"><option value="gaming">Gaming polyvalent</option><option value="competitive">Jeux compétitifs</option><option value="aaa">Jeux AAA</option><option value="streaming">Gaming + streaming</option><option value="creation">Création + gaming</option></select></div>
+        <div class="field"><label for="resolution">Résolution visée</label><select id="resolution"><option value="1080">Full HD — 1080p</option><option value="1440" selected>QHD — 1440p</option><option value="2160">Ultra HD — 4K</option></select></div>
+        <div class="field"><label for="refresh">Fréquence de l’écran</label><select id="refresh"><option value="60">60–75 Hz</option><option value="144" selected>120–165 Hz</option><option value="240">240 Hz et plus</option></select></div>
+        <div class="field"><div class="range-head"><label for="budget">Budget maximal</label><output id="budgetValue">1 600 €</output></div><input id="budget" type="range" min="700" max="3500" step="50" value="1600"></div>
+        <div class="field"><label for="gpu">Carte graphique</label><select id="gpu"><option value="all">Sans préférence</option><option value="5060">RTX 5060 / équivalent</option><option value="5070">RTX 5070 / équivalent</option><option value="5080">RTX 5080 / équivalent</option></select></div>
+        <div class="field"><label for="cpu">Processeur</label><select id="cpu"><option value="all">Sans préférence</option><option value="5">Ryzen 5 / Core 5</option><option value="7">Ryzen 7 / Core 7</option><option value="9">Ryzen 9 / Core 9</option></select></div>
+        <div class="field"><label>Mémoire minimale</label><div class="checks"><label class="check"><input type="radio" name="ram" value="16">16 Go</label><label class="check"><input type="radio" name="ram" value="32" checked>32 Go</label><label class="check"><input type="radio" name="ram" value="64">64 Go</label></div></div>
+        <div class="field"><label>Stockage minimal</label><div class="checks"><label class="check"><input type="radio" name="storage" value="512">512 Go</label><label class="check"><input type="radio" name="storage" value="1000" checked>1 To</label><label class="check"><input type="radio" name="storage" value="2000">2 To</label></div></div>
+        <button class="reset" type="reset">Réinitialiser les filtres</button>
+      </form>
+
+      <div class="results" aria-live="polite">
+        <div class="results-head"><div><h2>PC recommandés</h2><p id="summary"></p></div><select class="sort" id="sort" aria-label="Trier les résultats"><option value="match">Meilleure compatibilité</option><option value="priceAsc">Prix croissant</option><option value="priceDesc">Prix décroissant</option></select></div>
+        <div class="cards" id="cards"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-row"><span>© 2026 ConfigClair</span><span>Données de démonstration — aucune offre commerciale réelle.</span><span><a href="/confidentialite.html">Confidentialité</a> · <a href="mailto:contact@configclair.fr">Contact</a></span></div></footer>
+
+  <script>
+    const pcs = [
+      {name:"Nova FHD",merchant:"Marchand démo A",price:899,cpu:"Ryzen 5 7600",cpuTier:5,gpu:"RTX 5060",gpuTier:5060,ram:16,storage:1000,resolution:1080,refresh:165,uses:["gaming","competitive"],note:"Excellent point de départ pour jouer en Full HD avec une fréquence élevée."},
+      {name:"Pulse 1440",merchant:"Marchand démo B",price:1299,cpu:"Core 5 245K",cpuTier:5,gpu:"RTX 5070",gpuTier:5070,ram:32,storage:1000,resolution:1440,refresh:165,uses:["gaming","competitive","aaa"],note:"Configuration équilibrée pour le 1440p, sans dépense superflue."},
+      {name:"Horizon QHD",merchant:"Marchand démo A",price:1499,cpu:"Ryzen 7 9700X",cpuTier:7,gpu:"RTX 5070",gpuTier:5070,ram:32,storage:2000,resolution:1440,refresh:180,uses:["gaming","aaa","streaming"],note:"Plus de marge côté processeur et stockage pour jouer et diffuser."},
+      {name:"Creator Play",merchant:"Marchand démo C",price:1749,cpu:"Core 7 265K",cpuTier:7,gpu:"RTX 5070",gpuTier:5070,ram:64,storage:2000,resolution:1440,refresh:165,uses:["creation","streaming","aaa"],note:"Pensé pour la création, le multitâche lourd et le gaming 1440p."},
+      {name:"Velocity 240",merchant:"Marchand démo B",price:1899,cpu:"Ryzen 7 9800X3D",cpuTier:7,gpu:"RTX 5070",gpuTier:5070,ram:32,storage:2000,resolution:1440,refresh:240,uses:["competitive","gaming","streaming"],note:"Priorité aux images par seconde pour les joueurs compétitifs."},
+      {name:"Titan 4K",merchant:"Marchand démo A",price:2499,cpu:"Ryzen 9 9900X",cpuTier:9,gpu:"RTX 5080",gpuTier:5080,ram:32,storage:2000,resolution:2160,refresh:144,uses:["aaa","gaming","streaming"],note:"Une configuration haut de gamme adaptée au jeu en 4K."},
+      {name:"Studio Ultra",merchant:"Marchand démo C",price:2899,cpu:"Core 9 285K",cpuTier:9,gpu:"RTX 5080",gpuTier:5080,ram:64,storage:2000,resolution:2160,refresh:144,uses:["creation","streaming","aaa"],note:"Puissance élevée pour créer, diffuser et jouer en très haute définition."}
+    ];
+
+    const $ = id => document.getElementById(id);
+    const filters = $("filters"), cards = $("cards"), summary = $("summary"), budget = $("budget"), budgetValue = $("budgetValue"), sort = $("sort");
+    const money = value => new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(value);
+
+    function values(){return{usage:$("usage").value,resolution:+$("resolution").value,refresh:+$("refresh").value,budget:+budget.value,gpu:$("gpu").value,cpu:$("cpu").value,ram:+filters.elements.ram.value,storage:+filters.elements.storage.value}}
+    function score(pc,f){let s=100;if(pc.price>f.budget)s-=Math.min(55,(pc.price-f.budget)/18);else s-=Math.min(12,(f.budget-pc.price)/180);if(pc.resolution<f.resolution)s-=32;else if(pc.resolution===f.resolution)s+=12;if(pc.refresh<f.refresh)s-=Math.min(22,(f.refresh-pc.refresh)/5);if(!pc.uses.includes(f.usage))s-=18;if(pc.ram<f.ram)s-=18;if(pc.storage<f.storage)s-=14;if(f.gpu!=="all"&&pc.gpuTier!==+f.gpu)s-=22;if(f.cpu!=="all"&&pc.cpuTier!==+f.cpu)s-=18;return Math.max(1,Math.min(99,Math.round(s)))}
+    function render(){const f=values();budgetValue.value=money(f.budget);let list=pcs.map(pc=>({...pc,match:score(pc,f)})).filter(pc=>pc.match>=35&&pc.ram>=f.ram&&pc.storage>=f.storage);if(sort.value==="priceAsc")list.sort((a,b)=>a.price-b.price);else if(sort.value==="priceDesc")list.sort((a,b)=>b.price-a.price);else list.sort((a,b)=>b.match-a.match||a.price-b.price);summary.textContent=`${list.length} résultat${list.length>1?"s":""} avec vos critères`;if(!list.length){cards.innerHTML='<div class="empty"><strong>Aucun PC ne correspond suffisamment.</strong>Augmentez le budget ou assouplissez un critère.</div>';return}cards.innerHTML=list.map((pc,i)=>`<article class="card"><div><div class="card-top"><span class="rank">${String(i+1).padStart(2,"0")}</span><h3>${pc.name}</h3><span class="match">${pc.match}% compatible</span></div><div class="specs"><span class="spec">${pc.cpu}</span><span class="spec">${pc.gpu}</span><span class="spec">${pc.ram} Go RAM</span><span class="spec">${pc.storage>=1000?pc.storage/1000+" To":pc.storage+" Go"} SSD</span><span class="spec">${pc.resolution===2160?"4K":pc.resolution+"p"} · ${pc.refresh} Hz</span></div><p class="reason">${pc.note}</p></div><div class="side"><div class="price">${money(pc.price)}</div><div class="merchant">${pc.merchant}</div><a class="offer" href="#" aria-disabled="true">Bientôt disponible</a></div></article>`).join("")}
+    filters.addEventListener("input",render);filters.addEventListener("change",render);sort.addEventListener("change",render);filters.addEventListener("reset",()=>setTimeout(render));render();
+  </script>
+</body>
+</html>
